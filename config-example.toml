@@ -1,0 +1,48 @@
+[location]
+dir_resources = 'resources'
+dir_logs = 'logs'
+dir_output = 'output'
+
+[dataset]
+# left-close right-open interval
+neg_rule_file = ['rules-to-generate-negative-samples.json']
+neg_rule_tag_classes = ['movement_typical']
+
+[train]
+seed = 0
+batch_size = 50
+n_epochs = 60
+patience = 20
+learning_rate = 1e-4
+use_init_token_tag = true
+token_min_freq = 1
+neg_enabled = true
+neg_loss_type = 'token'
+tau_margin = 0.01
+neg_samples_ratio = 0.5
+neg_loss_ratio = 1.0
+rics = [
+    '.N225',
+    '.TOPX',
+    '.SPX',
+    '.DJI',
+    '.FTSE',
+    '.HSI',
+    '.SSEC',
+    'JPY=',
+    'EURJPY=',
+    'JNIc1'
+]
+base_ric = ''
+use_standardization = true
+
+[encoder]
+enc_hidden_size = 256
+base_ric_hidden_size = 256
+ric_hidden_size = 32
+enc_n_layers = 3
+word_embed_size = 128
+time_embed_size = 64
+
+[decoder]
+dec_hidden_size = 256
